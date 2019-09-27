@@ -42,7 +42,7 @@ componentWillReceiveProps(nextProps:any) {
 
   if(nextProps.getPokemonTypes.loading == false){
     if(this.state.pokemonTypes.length==0){
-
+      // Pokemon type is set only once when the page is rendered for the firest time
       this.setState({
         pokemonTypes:nextProps.getPokemonTypes.pokemonTypes,
       })
@@ -50,6 +50,7 @@ componentWillReceiveProps(nextProps:any) {
   } 
 
    if(nextProps.fetchPokemonList.loading == false){
+    // Pokemon list fetched everytime when serach/type or favorite is selected
     this.setState({
       pokemonList:nextProps.fetchPokemonList.pokemons.edges
     })
@@ -57,6 +58,7 @@ componentWillReceiveProps(nextProps:any) {
 }
 
 typechange(e: React.FormEvent<HTMLSelectElement>){
+  // Fetch pokemons according to the type selected 
   let typeValue: string = e.currentTarget.value.trim();
   this.setState({
     typeSelected: typeValue,
@@ -67,6 +69,7 @@ typechange(e: React.FormEvent<HTMLSelectElement>){
     this.props.fetchPokemonList.refetch({
       input:{
         limit:151,
+        search:this.state.searchText,
         filter:{
           type:typeValue,
           isFavorite:this.state.isFavoriteSelected
@@ -77,17 +80,17 @@ typechange(e: React.FormEvent<HTMLSelectElement>){
     this.props.fetchPokemonList.refetch({
       input:{
         limit:151,
+        search:this.state.searchText,
         filter:{
           type:typeValue
         }
       }
   })
   }
-
-
 }
 
 searchTextChange(e: React.FormEvent<HTMLInputElement>){
+  // Search pokemons according to the search field 
   let searchtextValue: string = e.currentTarget.value;
   this.setState({
     searchText: searchtextValue
@@ -99,21 +102,25 @@ searchTextChange(e: React.FormEvent<HTMLInputElement>){
         search:searchtextValue,
         limit:151,
         filter:{
-          isFavorite:this.state.isFavoriteSelected
+          isFavorite:this.state.isFavoriteSelected,
+          type:this.state.typeSelected
         }
       }
     })
   } else{
     this.props.fetchPokemonList.refetch({
       input:{
-        search:searchtextValue
+        search:searchtextValue,
+        filter:{
+          type:this.state.typeSelected
+        }
       }
     })
   }
- 
 }
 
 onAllButtonClick(e:React.MouseEvent<HTMLElement>){
+  //Fetch all pokemons
   this.setState({
     isFavoriteSelected: false
   });
@@ -132,6 +139,7 @@ onFavButtonClick(e:React.MouseEvent<HTMLElement>){
   this.setState({
     isFavoriteSelected: true
   });
+  //Fetch only all the pokemons marked as favorite
   this.props.fetchPokemonList.refetch({
     input:{
       limit:151,
@@ -147,13 +155,16 @@ onFavButtonClick(e:React.MouseEvent<HTMLElement>){
 
 
 Fav(value:string){
+  // on selecting pokemon as favorite
   this.props.markFavorite({
     variables:{
       input:value
     }
   });
 }
+
 unFav(value:string){
+  // on selecting pokemon as unfavorite
   this.props.markunFavorite({
     variables:{
       input:value
@@ -174,20 +185,24 @@ unFav(value:string){
 }
 
 onDisplayTypeCol(){
+  // Displays pokemon list in column view
   this.setState({
     listColDisplay:true
   })
 }
 
 onDisplayTypeRow(){
+  // Displays pokemon list in row view
   this.setState({
     listColDisplay:false
   })
 }
 
 listToDisplay(){
+  // container to display pokemon list
   if(this.state.listColDisplay){
     if(this.state.pokemonList.length>3){
+      // Fetch pokemon list when column view is selected and returnd list contains more than 3 pokemons
       return(
         <PokemonList1 
         PokemonArr={this.state.pokemonList}
@@ -197,6 +212,7 @@ listToDisplay(){
       )
     } else{
       return(
+        // Fetch pokemon list when column view is selected and returnd list contains less than 3 pokemons (to prevent cards from spreading)
         <PokemonList2 
         PokemonArr={this.state.pokemonList}
         onFav={this.Fav.bind(this)}
@@ -205,6 +221,7 @@ listToDisplay(){
       )
     }
   }else{
+    // Fetch pokemon list when row view is selected
     return(
       <PokemonList3 
       PokemonArr={this.state.pokemonList}
@@ -213,58 +230,58 @@ listToDisplay(){
     />
     )
   }
-
-  
 }
 
-
-
 renderType(){
-
+  //Populate pokemon type in dropdown
   return this.state.pokemonTypes.map((item,i) =>{
     return <option key={i} id={'type'+i} value={item}>{item}</option>
   })
 }
 
-  renderTopbar() {
-    if(this.state.isFavoriteSelected) {
-      return(<div className="home-header-btn-div">
-                <div className="home-header-btn-div-all" onClick={e => this.onAllButtonClick(e)}>
-                  <label className="home-header-btn-txt ">All</label>
-                </div> 
-                <div className="home-header-btn-div-favorite selected-tab" onClick={e => this.onFavButtonClick(e)}>
-                  <label className="home-header-btn-txt">Favourites</label>
-                </div>
-              </div>)
-    } else {
-      return(<div className="home-header-btn-div">
-                <div className="home-header-btn-div-all selected-tab" onClick={e => this.onAllButtonClick(e)}>
-                  <label className="home-header-btn-txt ">All</label>
-                </div> 
-                <div className="home-header-btn-div-favorite" onClick={e => this.onFavButtonClick(e)}>
-                  <label className="home-header-btn-txt">Favourites</label>
-                </div>
-              </div>)
+renderTopbar() {
+  if(this.state.isFavoriteSelected) {
+    return(
+      <div className="home-header-btn-div">
+        <div className="home-header-btn-div-all" onClick={e => this.onAllButtonClick(e)}>
+          <label className="home-header-btn-txt ">All</label>
+        </div> 
+        <div className="home-header-btn-div-favorite selected-tab" onClick={e => this.onFavButtonClick(e)}>
+          <label className="home-header-btn-txt">Favourites</label>
+        </div>
+      </div>
+      )
+  } else{
+    return(
+      <div className="home-header-btn-div">
+        <div className="home-header-btn-div-all selected-tab" onClick={e => this.onAllButtonClick(e)}>
+          <label className="home-header-btn-txt ">All</label>
+            </div> 
+          <div className="home-header-btn-div-favorite" onClick={e => this.onFavButtonClick(e)}>
+            <label className="home-header-btn-txt">Favourites</label>
+          </div>
+      </div>
+      )
     }
   }
 
-  ondeselect(){
-    this.setState({
-      typeSelected:"",
-      cross:false
-    })
+ondeselect(){
+  //Clear the selected option from the select type dropdown
+  this.setState({
+    typeSelected:"",
+    cross:false
+  })
 
-    this.props.fetchPokemonList.refetch({
-      input:{
-        limit:151,
-        search:this.state.searchText,
-        filter:{
-          isFavorite:this.state.isFavoriteSelected
-        }
+  this.props.fetchPokemonList.refetch({
+    input:{
+      limit:151,
+      search:this.state.searchText,
+      filter:{
+        isFavorite:this.state.isFavoriteSelected
       }
-    }) 
-
-  }
+    }
+  }) 
+}
 
   render(){
     return (

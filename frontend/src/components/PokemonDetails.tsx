@@ -2,7 +2,6 @@ import * as React from 'react';
 import {graphql,compose} from 'react-apollo';
 import { fetchPokemonByName,markFavorite,markunFavorite } from '../queries/queries';
 import { RouteComponentProps } from 'react-router-dom';
-//import { FetchPokemonbyNameQuery} from '../generated/graphql';
 import playIcon from '../media/icons/icon_volume.png';
 import favorite from '../media/icons/favorite.png';
 import unfavorite from '../media/icons/unfavorite.png';
@@ -24,20 +23,19 @@ class PokemonDetails extends React.Component<IPokemonDetailsProps,IPokemonDetail
 componentDidMount(){
     this.props.fetchPokemonByName.refetch({
       input:this.state.name
-    }) 
-    
-  }
+    })   
+}
 
 componentWillReceiveProps(nextProps:any) {
-console.log(nextProps);
-if(nextProps.fetchPokemonByName.loading == false){
- this.setState({
-  pokemonByName:nextProps.fetchPokemonByName.pokemonByName
- })
-}
+  if(nextProps.fetchPokemonByName.loading == false){
+    this.setState({
+    pokemonByName:nextProps.fetchPokemonByName.pokemonByName
+    })
+  }
 }
 
 onUnFavBtnClick(name:string,id:string){
+  //Fetch pokemon by name when pokemon marked as unfavorite
   this.props.markunFavorite({
     variables:{
       input:id
@@ -49,6 +47,7 @@ onUnFavBtnClick(name:string,id:string){
 }
 
 onFavBtnClick(name:string,id:string){
+  //Fetch pokemon by name when pokemon marked as favorite
   this.props.markFavorite({
     variables:{
       input:id
@@ -60,6 +59,7 @@ onFavBtnClick(name:string,id:string){
 }
 
 play(value:string) {
+  // on play icon click
   this.setState({
     soundUrl:value,
     audioKey: new Date().getTime().toString()
@@ -68,6 +68,7 @@ play(value:string) {
 
 
 renderEvolution(){
+  //Display evolution cards if present
   if(this.state.pokemonByName['evolutions']){
     return this.state.pokemonByName['evolutions'].map((item,i) =>{
       return(
@@ -87,21 +88,14 @@ renderEvolution(){
             } 
           </div>
         </div>  
-
       </div>
-
       )
     })
   }
 }
 
 
- 
-
-
-render(){
-  
-  
+render(){  
     return (
       <div className="main-home-container">
           <div className="pokemon-detail-div"> 
@@ -146,10 +140,8 @@ render(){
                     } 
                 </div>
 
-                <div className="pokemon-detail-div__card__body__cpbar">
-                </div>
-                <div className="pokemon-detail-div__card__body__hpbar">
-                </div>
+                <div className="pokemon-detail-div__card__body__cpbar"></div>
+                <div className="pokemon-detail-div__card__body__hpbar"></div>
 
                 <div className="pokemon-detail-div__card__body__cp">
                   <label className="pokemon-detail-div__card__body__cp__txt">
@@ -161,8 +153,6 @@ render(){
                     HP : {this.state.pokemonByName['maxHP']}
                   </label>
                 </div>
-
-
               </div> 
               <div className="pokemon-detail-div__card__footer">
                   <div className="pokemon-detail-div__card__footer__weight">
@@ -177,8 +167,7 @@ render(){
                         :
                         <label className="pokemon-detail-div__card__footer__weight__footer__txt"> 
                         </label>
-                      }
-                        
+                      }  
                     </div>
 
                   </div>
@@ -196,7 +185,6 @@ render(){
                         </label>
                       }
                     </div>
-
                   </div>
               </div>  
             </div>
@@ -210,7 +198,6 @@ render(){
   
                 {this.renderEvolution()} 
               </div>
-
             </div>
           :<div></div>
           }     

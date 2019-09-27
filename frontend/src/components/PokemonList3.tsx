@@ -22,7 +22,7 @@ export const PokemonList3: React.FunctionComponent<IPokemonListProps> = ({ Pokem
                     </Link>
      
                     <div className="row-card-div__footer__text">
-                      <h1 className="row-card-div__footer__text__1">{item.name}</h1>
+                      <Link className="pokemon_detail_link" to={`/${item.name}`}><h1 className="row-card-div__footer__text__1">{item.name}</h1></Link>
                       <label className="row-card-div__footer__text__2">{item.types.join(',')}</label>
                     </div>
                     {item.isFavorite?

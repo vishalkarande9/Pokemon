@@ -100,8 +100,10 @@ body {
   align-items: center;
   justify-items: center; }
   .cross-icon-div__icon {
-    height: auto;
-    max-height: 50%; }
+    width: 50%; }
+    @media only screen and (min-width: 600px) {
+      .cross-icon-div__icon {
+        width: 30%; } }
 
 .select-type-div select {
   background-color: #F2F2F2;
@@ -236,9 +238,9 @@ body {
 
 .row-card-div__pokemon__img {
   width: 50%; }
-  @media only screen and (min-width: 500px) {
+  @media only screen and (min-width: 800px) {
     .row-card-div__pokemon__img {
-      width: 50%; } }
+      width: 30%; } }
 
 .row-card-div__footer__text {
   display: grid;
@@ -281,6 +283,9 @@ body {
 .selected-tab {
   color: white;
   background: #6BC694; }
+
+.pokemon_detail_link {
+  text-decoration: none; }
 
 .main-home-container {
   height: 100vh;
