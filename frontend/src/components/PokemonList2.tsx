@@ -4,9 +4,6 @@ import unfavorite from '../media/icons/unfavorite.png';
 import { checkPropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
-
-
-// no children defined here
 type IPokemonListProps = {
   PokemonArr: any,
   onFav(value:string):void,

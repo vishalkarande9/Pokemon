@@ -13,7 +13,7 @@ type IPokemonListProps = {
   onunFav(value:string):void,
 }
 
-export const PokemonList: React.FunctionComponent<IPokemonListProps> = ({ PokemonArr,onFav,onunFav, children}) => {
+export const PokemonList1: React.FunctionComponent<IPokemonListProps> = ({ PokemonArr,onFav,onunFav, children}) => {
 
   return (
     <div className="container-col-view">

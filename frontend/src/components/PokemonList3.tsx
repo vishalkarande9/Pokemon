@@ -1,13 +1,8 @@
 import React, { FunctionComponent } from 'react';
-//import favorite from '../media/icons/favorite.png';
-//import unfavorite from '../media/icons/unfavorite.png';
 import favorite from '../media/icons/icon_fav_selected.png';
 import unfavorite from '../media/icons/icon_fav_unselected.png';
 import { Link } from 'react-router-dom';
 
-
-
-// no children defined here
 type IPokemonListProps = {
   PokemonArr: any,
   onFav(value:string):void,

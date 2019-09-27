@@ -2,7 +2,7 @@ import * as React from 'react';
 import {graphql,compose} from 'react-apollo';
 import { fetchPokemonByName,markFavorite,markunFavorite } from '../queries/queries';
 import { RouteComponentProps } from 'react-router-dom';
-import { FetchPokemonbyNameQuery} from '../generated/graphql';
+//import { FetchPokemonbyNameQuery} from '../generated/graphql';
 import playIcon from '../media/icons/icon_volume.png';
 import favorite from '../media/icons/favorite.png';
 import unfavorite from '../media/icons/unfavorite.png';

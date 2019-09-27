@@ -6,7 +6,7 @@ import row from '../media/icons/row-view.png';
 import cross from '../media/icons/cross.png';
 
 // components
-import  {PokemonList}  from './PokemonList';
+import  {PokemonList1}  from './PokemonList1';
 import  {PokemonList2}  from './PokemonList2';
 import {PokemonList3} from './PokemonList3';
 
@@ -26,11 +26,12 @@ class App extends React.Component<IlistProps,IlistState>{
     }
 }
 
+
+
 componentDidMount(){
-  console.log("componented did mount is called",this.props);
   this.props.fetchPokemonList.refetch({
     input:{
-      limit:150
+      limit:151
     }
   }) 
   
@@ -39,11 +40,8 @@ componentDidMount(){
 
 componentWillReceiveProps(nextProps:any) {
 
-  console.log("inside component will receive props");
-
   if(nextProps.getPokemonTypes.loading == false){
     if(this.state.pokemonTypes.length==0){
-      console.log("Populate Type",nextProps);
 
       this.setState({
         pokemonTypes:nextProps.getPokemonTypes.pokemonTypes,
@@ -51,16 +49,11 @@ componentWillReceiveProps(nextProps:any) {
     }
   } 
 
-  
    if(nextProps.fetchPokemonList.loading == false){
-     console.log("Populate List",nextProps.fetchPokemonList);
     this.setState({
       pokemonList:nextProps.fetchPokemonList.pokemons.edges
     })
   }
-  
-
-
 }
 
 typechange(e: React.FormEvent<HTMLSelectElement>){
@@ -70,12 +63,10 @@ typechange(e: React.FormEvent<HTMLSelectElement>){
     cross:true
   });
 
-
-
   if(this.state.isFavoriteSelected){
     this.props.fetchPokemonList.refetch({
       input:{
-        limit:150,
+        limit:151,
         filter:{
           type:typeValue,
           isFavorite:this.state.isFavoriteSelected
@@ -85,7 +76,7 @@ typechange(e: React.FormEvent<HTMLSelectElement>){
   } else{
     this.props.fetchPokemonList.refetch({
       input:{
-        limit:150,
+        limit:151,
         filter:{
           type:typeValue
         }
@@ -106,7 +97,7 @@ searchTextChange(e: React.FormEvent<HTMLInputElement>){
     this.props.fetchPokemonList.refetch({
       input:{
         search:searchtextValue,
-        limit:150,
+        limit:151,
         filter:{
           isFavorite:this.state.isFavoriteSelected
         }
@@ -128,7 +119,7 @@ onAllButtonClick(e:React.MouseEvent<HTMLElement>){
   });
   this.props.fetchPokemonList.refetch({
     input:{
-      limit:150,
+      limit:151,
       search:this.state.searchText,
       filter:{
         type:this.state.typeSelected
@@ -143,7 +134,7 @@ onFavButtonClick(e:React.MouseEvent<HTMLElement>){
   });
   this.props.fetchPokemonList.refetch({
     input:{
-      limit:150,
+      limit:151,
       search:this.state.searchText,
       filter:{
         type:this.state.typeSelected,
@@ -172,7 +163,7 @@ unFav(value:string){
     this.props.fetchPokemonList.refetch({
       input:{
         search:this.state.searchText,
-        limit:150,
+        limit:151,
         filter:{
           type:this.state.typeSelected,
           isFavorite:true
@@ -198,7 +189,7 @@ listToDisplay(){
   if(this.state.listColDisplay){
     if(this.state.pokemonList.length>3){
       return(
-        <PokemonList 
+        <PokemonList1 
         PokemonArr={this.state.pokemonList}
         onFav={this.Fav.bind(this)}
         onunFav={this.unFav.bind(this)}
@@ -265,7 +256,7 @@ renderType(){
 
     this.props.fetchPokemonList.refetch({
       input:{
-        limit:150,
+        limit:151,
         search:this.state.searchText,
         filter:{
           isFavorite:this.state.isFavoriteSelected
@@ -355,6 +346,7 @@ export default compose(
       return {
         variables: {
           input:{
+              limit:100
             }
           }
         }
