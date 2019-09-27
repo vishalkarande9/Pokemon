@@ -1,0 +1,363 @@
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;   // 1200px
+$bp-large: 62.5em;   // 1000px
+$bp-medium: 50em;    // 800px;
+$bp-small: 37.5em;    // 600px;
+$green:#6BC694;
+$grey:#F2F2F2;
+
+.main-home-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
+
+.home-header-btn-div{
+    display:grid;
+    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(30,1fr);
+    background-color: white;
+    height: 8%;
+    width:100%;
+}
+
+.home-header-btn-div-all {
+    grid-row: 2/6;
+    grid-column: 2/16;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border-top: 1px solid $green;
+    border-bottom: 1px solid $green;
+    border-left: 1px solid $green;
+    color:$green;
+    cursor: pointer;
+}
+
+.home-header-btn-div-favorite{
+    grid-row: 2/6;
+    grid-column: 16/30;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border-top: 1px solid $green;
+    border-bottom: 1px solid $green;
+    border-right: 1px solid $green;
+    color: $green;
+    cursor: pointer;
+}
+
+.home-header-btn-txt {
+    font-family: $font-display;
+    font-size: medium;
+}
+
+.home-input-div{
+    display:grid;
+    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(30,1fr);
+    background-color: white;
+    height: 8%;
+    width:100%;
+    grid-column-gap: 5px;
+}
+
+.search-input-div{
+    grid-row: 1/5;
+    grid-column: 2/19;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    border: 0;
+    outline: 0;
+
+}
+
+.search-input-div input{
+     border :none;
+     border-radius: 5px;
+     border-color: $grey;
+     font-size: small;
+}
+
+
+
+.search-input-txt{
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    background-color: $grey;
+}
+
+.select-type-div{
+    grid-row: 1/5;
+    grid-column: 19/26;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.cross-icon-div{
+    grid-row: 1/5;
+    grid-column: 24/26;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    &__icon{
+        height: auto;
+        max-height: 50%;
+    }
+}
+
+
+.select-type-div select {
+    background-color: $grey;
+    color: grey;
+    font-size: small;
+    border:none;
+    -webkit-appearance: none;  
+    -moz-appearance: none; 
+}
+
+.home-input-row-view{
+    grid-row: 1/5;
+    grid-column: 26/28;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+ 
+    &__icon{
+        height: auto;
+        max-height: 80%;
+    }   
+}
+
+.home-input-col-view{
+    grid-row: 1/5;
+    grid-column: 28/30;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-left: 2px solid $grey;
+
+    &__icon{
+      height: auto;
+      max-height: 80%;
+
+    }  
+}
+
+
+
+//***************
+
+.container{
+    height: 84%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(30,1fr);
+}
+
+.container-col-view{
+    grid-column: 2/30;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fit,minmax(232px,1fr));
+    overflow-y: auto;
+    grid-gap: 10px;
+}
+
+
+
+.container-col-view-2{
+    grid-column: 2/30;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fit,1fr);
+    overflow-y: auto;
+    grid-gap: 10px;
+
+
+    @media only screen and (min-width: 505px) {
+        grid-template-columns: repeat(auto-fit,230px);
+    }
+    
+    @media only screen and (min-width: 1200px) {
+        grid-template-columns: repeat(auto-fit,291px);
+    }
+
+    @media only screen and (min-width: 1400px) {
+        grid-template-columns: repeat(auto-fit,259px);
+    }
+    
+  
+}
+
+
+.col-card-div{
+    display: grid;
+    grid-template-rows: repeat(10,1fr);
+    border: 1px solid $grey;
+   &__pokemon{
+       grid-row: 1/8;
+       padding: 25px;
+      &__link{
+          display: grid;
+          align-items: center;
+          justify-content: center;
+      }
+
+       &__img{
+        max-width: 180px;
+       // width: 100%;
+       max-height: 160px;
+      //  height: 100%;
+       }
+
+   }
+
+   &__footer{
+    grid-row: 8/-1;
+
+    background-color: $grey; 
+
+   display:grid;
+   grid-template-columns: repeat(3,1fr);
+
+   &__text{
+        grid-column: 1/3;
+
+        &__1{
+            padding: 10px;
+            color: black;
+            font-size:large;
+        }
+        &__2{
+            padding: 10px;
+            color: black;
+            font-size: medium;
+        }
+
+   }
+
+   &__icondiv{
+    grid-column: 3/4;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(5,1fr);
+
+    &__favoriteIcon{
+        width: 100%;
+        grid-row: 2/5;
+        grid-column: 2/4;
+    }
+   }
+
+   }
+
+}
+
+
+.container-row-view{
+    grid-column: 2/30;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 70px;
+    @media only screen and (min-width: 500px) {
+        grid-auto-rows: 100px;
+    }
+   // grid-template-columns: repeat(auto-fit,minmax(232px,1fr));
+    overflow-y: auto;
+    grid-gap: 10px;
+    
+}
+
+.row-card-div{
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    border: 1px solid $grey;
+
+}
+
+
+.row-card-div__pokemon__link{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+   // grid-template-rows: repeat(5,1fr);
+   // grid-template-columns: repeat(5,1fr);
+}
+
+
+.row-card-div__pokemon__img{
+  //  grid-row: 2/5;
+  //  grid-column: 2/5;
+  //  padding: 25px;
+    //width: 100%;
+    height: auto;
+    max-height: 45%;
+    @media only screen and (min-width: 500px) {
+        max-height: 60%;
+    }
+
+}
+
+.row-card-div__footer__text{
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    border-left: 1px solid $grey;
+    padding: 10px;
+    background-color: $grey;
+}
+
+.row-card-div__footer__text__1{
+    justify-self: start;
+    align-self: end;
+    font-size: medium;
+    @media only screen and (min-width: 500px) {
+        font-size: large;
+    }
+    color: black;
+}
+
+.row-card-div__footer__text__2{
+    justify-self: start;
+    align-self: start;
+    font-size: small;
+    @media only screen and (min-width: 500px) {
+        font-size: medium;
+    }
+    color: black;
+}
+
+.row-card-div__footer__icondiv{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    //grid-template-rows: repeat(5,1fr);
+    //grid-template-columns: repeat(4,1fr);
+    background-color: $grey;
+}
+
+.row-card-div__footer__icondiv__favoriteIcon{
+    //grid-row: 3/4;
+    //grid-column: 3/5;
+    height: auto;
+    max-height: 25%;
+    @media only screen and (min-width: 500px) {
+        max-height: 40%;
+    }
+}
+
+.selected-tab {
+    color: white;
+    background: #6BC694;
+}

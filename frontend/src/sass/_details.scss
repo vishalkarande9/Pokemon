@@ -1,0 +1,310 @@
+$green:#6BC694;
+$grey:#F2F2F2;
+
+.main-home-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
+
+.pokemon-detail-div{
+    height:70%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(80,1fr);
+    grid-template-columns: repeat(30,1fr);
+    background-color: white;
+
+    &__card{
+        grid-row:4/80;
+        grid-column: 2/30;
+        border: 1px groove $grey;
+        display: grid;
+        grid-template-rows: repeat(8,1fr);
+        grid-template-columns: 1fr;
+
+        &__header{
+            grid-row: 1/6;
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-rows: repeat(4,1fr);
+            grid-template-columns: repeat(6,1fr);
+
+            &__img__div{
+                grid-row: 1/-1;
+                grid-column: 2/6;
+                display: grid;
+                align-items: center;
+                justify-items: center;
+
+                &__img{
+                   // max-width: 300px;
+                   // max-height: 300px;
+                    height: auto;
+                    max-height: 80%;
+                }
+            }
+            
+            &__sound__div{
+                grid-row: 4/5;
+                grid-column: 1/2;
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                grid-template-rows: repeat(2,1fr);
+                justify-items: center;
+                align-items: center;
+
+                &__icon{
+                    grid-row: 1/-1;
+                    grid-column: 1/-1;
+                    z-index: 10;
+                    height: auto;
+                    max-height: 80%;
+                }
+            }
+
+        }
+
+        &__body{
+            grid-row: 6/8;
+            grid-column: 1/-1;
+            border-top: 1px groove $grey;
+            display: grid;
+            grid-template-rows: repeat(16,1fr);
+            grid-template-columns: repeat(13,1fr);
+            background-color: $grey;
+           &__name{
+            grid-row: 1/5;
+            grid-column: 1/12;
+            display: grid;
+            justify-items: start;
+            align-items: end;
+            &__txt{
+               font-size: small;
+               @media only screen and (min-width: 500px) {
+                font-size: large;
+               }
+               color: black;
+               padding-left: 4px; 
+            }
+           }
+           &__type{
+               grid-row: 5/9;
+               grid-column: 1/12;
+               display: grid;
+               justify-items: start;
+               align-items: start;
+               &__txt{
+                font-size: small;
+                @media only screen and (min-width: 500px) {
+                 font-size: large;
+                }                  
+                color: black; 
+                padding-left: 4px; 
+               }
+           }
+           &__fav{
+               grid-row: 1/9;
+               grid-column: 12/14;
+               display: grid;
+               justify-items: center;
+               align-items: center;
+               &__icon{
+                height: auto;
+                max-height: 60%;
+               }
+           }
+           &__cpbar{
+            grid-row: 10/11;
+            grid-column: 1/12;
+            background-color: purple;
+            border-radius: 5px;
+           }
+           &__hpbar{
+            grid-row: 14/15;
+            grid-column: 1/12;
+            background-color:$green;
+            border-radius: 5px;
+           }
+           &__cp{
+            grid-row: 9/13;
+            grid-column: 12/15;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            &__txt{
+                @media only screen and (min-width: 500px) {
+                    font-size: medium;
+                }
+                font-size: 11px;
+                color: black;
+            }
+           }
+           &__hp{
+            grid-row: 13/17;
+            grid-column: 12/15;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            &__txt{
+                @media only screen and (min-width: 500px) {
+                    font-size: medium;
+                }
+                font-size: 11px;
+                color: black;
+            }
+           }
+           
+        }
+
+        &__footer{
+            grid-row: 8/9;
+            grid-column: 1/-1;
+            border-top: 1px groove $grey;
+            background-color: $grey;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            &__weight{
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+                border-right: 1px groove $grey;
+                &__header{
+                    display: grid;
+                    justify-items: center;
+                    align-items: end;
+                    font-size: medium;
+                    @media only screen and (min-width: 500px) {
+                     font-size: large;
+                 }
+                    color: black;
+                }
+                &__footer{
+                    display: grid;
+                    justify-items: center;
+                    align-items: top;
+                    &__txt{
+                        font-size: small;
+                        @media only screen and (min-width: 500px) {
+                         font-size: medium;
+                     }
+                        color: black;
+                    }
+                }
+            }
+
+            &__height{
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+                &__header{
+                    display: grid;
+                    justify-items: center;
+                    align-items: end;
+                    font-size: medium;
+                    @media only screen and (min-width: 500px) {
+                     font-size: large;
+                 }
+                    color: black;
+                }
+                &__footer{
+                    display: grid;
+                    justify-items: center;
+                    align-items: top;
+                    &__txt{
+                        font-size: small;
+                        @media only screen and (min-width: 500px) {
+                         font-size: medium;
+                     }
+                        color: black;
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+
+.pokemon-evolution-div{
+    height:30%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(7,1fr);
+    grid-template-columns: repeat(30,1fr);
+    background-color: white;
+    &__heading{
+        grid-row: 1/2;
+        grid-column: 2/30;
+        display: grid;
+        align-items: center;
+        justify-items: start;
+        &__txt{
+            color: black;
+        }
+
+    }
+    &__body{
+        grid-row: 2/7;
+        grid-column: 2/30;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-column-gap: 10px;
+        grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+        overflow-y: auto;
+        
+        @media only screen and (min-width: 768px) {
+            grid-template-columns: repeat(auto-fit,220px);
+        }
+        
+        &__card{
+            display: grid;
+            grid-template-rows: 3fr 1fr;
+            border: 1px groove $grey;
+
+            &__imgdiv{
+                display:grid;
+                align-items: center;
+                justify-items: center;
+                &__img{
+                   // max-width: 160px;
+                    height: auto;
+                    max-height: 80%;
+                }
+            }
+            &__footer{
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                background-color: $grey;
+                border-top: 1px groove $grey;
+                &__namediv{
+                    grid-column: 1/4;
+                    display: grid;
+                    justify-items: start;
+                    align-items: center;
+                    &__txt{
+                        color:black;
+                        padding-left: 5px;
+                    }
+                }
+                &__favdiv{
+                    grid-column: 4/-1;
+                    display: grid;
+                    justify-items: center;
+                    align-items: center;
+                    &__icon{
+                        color:black;
+                       // max-width: 10px;
+                        height:auto;
+                        max-height: 50%;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.audio {
+    // visibility: hidden;
+    display: none;
+}
