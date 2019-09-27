@@ -6,9 +6,9 @@ import row from '../media/icons/row-view.png';
 import cross from '../media/icons/cross.png';
 
 // components
-import  {PokemonList1}  from './PokemonList1';
-import  {PokemonList2}  from './PokemonList2';
-import {PokemonList3} from './PokemonList3';
+import  {PokemonGridView1}  from './PokemonGridView1';
+import  {PokemonGridView2}  from './PokemonGridView2';
+import {PokemonListView} from './PokemonListView';
 
 
 class App extends React.Component<IlistProps,IlistState>{
@@ -42,7 +42,7 @@ componentWillReceiveProps(nextProps:any) {
 
   if(nextProps.getPokemonTypes.loading == false){
     if(this.state.pokemonTypes.length==0){
-      // Pokemon type is set only once when the page is rendered for the firest time
+      // Pokemon type is set only once when the page is rendered for the first time
       this.setState({
         pokemonTypes:nextProps.getPokemonTypes.pokemonTypes,
       })
@@ -139,7 +139,7 @@ onFavButtonClick(e:React.MouseEvent<HTMLElement>){
   this.setState({
     isFavoriteSelected: true
   });
-  //Fetch only all the pokemons marked as favorite
+  //Fetch only those pokemons which are marked as favorite
   this.props.fetchPokemonList.refetch({
     input:{
       limit:151,
@@ -185,14 +185,14 @@ unFav(value:string){
 }
 
 onDisplayTypeCol(){
-  // Displays pokemon list in column view
+  // Displays pokemon list in grid view
   this.setState({
     listColDisplay:true
   })
 }
 
 onDisplayTypeRow(){
-  // Displays pokemon list in row view
+  // Displays pokemon list in list view
   this.setState({
     listColDisplay:false
   })
@@ -202,9 +202,9 @@ listToDisplay(){
   // container to display pokemon list
   if(this.state.listColDisplay){
     if(this.state.pokemonList.length>3){
-      // Fetch pokemon list when column view is selected and returnd list contains more than 3 pokemons
+      // Fetch pokemon list when grid view is selected and returnd list contains more than 3 pokemons
       return(
-        <PokemonList1 
+        <PokemonGridView1
         PokemonArr={this.state.pokemonList}
         onFav={this.Fav.bind(this)}
         onunFav={this.unFav.bind(this)}
@@ -212,8 +212,8 @@ listToDisplay(){
       )
     } else{
       return(
-        // Fetch pokemon list when column view is selected and returnd list contains less than 3 pokemons (to prevent cards from spreading)
-        <PokemonList2 
+        // Fetch pokemon list when grid view is selected and returnd list contains less than 3 pokemons (to prevent cards from spreading)
+        <PokemonGridView2 
         PokemonArr={this.state.pokemonList}
         onFav={this.Fav.bind(this)}
         onunFav={this.unFav.bind(this)}
@@ -221,9 +221,9 @@ listToDisplay(){
       )
     }
   }else{
-    // Fetch pokemon list when row view is selected
+    // Fetch pokemon list when list view is selected
     return(
-      <PokemonList3 
+      <PokemonListView 
       PokemonArr={this.state.pokemonList}
       onFav={this.Fav.bind(this)}
       onunFav={this.unFav.bind(this)}

@@ -4,19 +4,16 @@ import unfavorite from '../media/icons/unfavorite.png';
 import { checkPropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
-
-
-// no children defined here
 type IPokemonListProps = {
   PokemonArr: any,
   onFav(value:string):void,
   onunFav(value:string):void,
 }
 
-export const PokemonList1: React.FunctionComponent<IPokemonListProps> = ({ PokemonArr,onFav,onunFav, children}) => {
+export const PokemonGridView2: React.FunctionComponent<IPokemonListProps> = ({ PokemonArr,onFav,onunFav, children}) => {
 
   return (
-    <div className="container-col-view">
+    <div className="container-col-view-2">
       {PokemonArr.map((item,i) => {
           return (
               <div key={i} className="col-card-div">
