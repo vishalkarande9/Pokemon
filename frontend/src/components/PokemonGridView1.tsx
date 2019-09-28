@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 // no children defined here
 type IPokemonListProps = {
   PokemonArr: any,
-  onFav(value:string):void,
-  onunFav(value:string):void,
+  onFav(value:string,name:string):void,
+  onunFav(value:string,name:string):void,
 }
 
 export const PokemonGridView1: React.FunctionComponent<IPokemonListProps> = ({ PokemonArr,onFav,onunFav, children}) => {
@@ -32,11 +32,11 @@ export const PokemonGridView1: React.FunctionComponent<IPokemonListProps> = ({ P
                     </div>
                     {
                       item.isFavorite?
-                      <div className="col-card-div__footer__icondiv" onClick={() => onunFav(item.id)}>
+                      <div className="col-card-div__footer__icondiv" onClick={() => onunFav(item.id,item.name)}>
                         <img className="col-card-div__footer__icondiv__favoriteIcon" src={favorite}></img>
                       </div>
                       :
-                      <div className="col-card-div__footer__icondiv" onClick={() => onFav(item.id)}>
+                      <div className="col-card-div__footer__icondiv" onClick={() => onFav(item.id,item.name)}>
                         <img className="col-card-div__footer__icondiv__favoriteIcon" src={unfavorite}></img>
                       </div>
                     }

@@ -339,3 +339,55 @@
 .pokemon_detail_link{
     text-decoration: none;
 }
+
+#snackbarFavAdded {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px;
+    font-size: small;
+    @media only screen and (min-width: 600px) {
+        min-width: 300px; 
+        margin-left: -150px;
+        font-size: medium;
+    }
+    @media only screen and (min-width: 1000px) {
+        min-width: 400px; 
+        margin-left: -200px;
+        font-size: large;
+    }  
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed; 
+    z-index: 10; 
+    left: 50%; 
+    bottom: 8%; 
+}
+
+.show {
+    visibility: visible !important; 
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 8%; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 8%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

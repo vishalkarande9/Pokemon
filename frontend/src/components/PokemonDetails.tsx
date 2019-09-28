@@ -35,7 +35,6 @@ componentWillReceiveProps(nextProps:any) {
 }
 
 onUnFavBtnClick(name:string,id:string){
-  //Fetch pokemon by name when pokemon marked as unfavorite
   this.props.markunFavorite({
     variables:{
       input:id
@@ -43,7 +42,15 @@ onUnFavBtnClick(name:string,id:string){
   });
   this.props.fetchPokemonByName.refetch({
     input:name
-  }) 
+  })
+  var x = document.getElementById('snackbarFavAdded') as HTMLInputElement;
+  if(x){
+    x.className = "show";
+    x.innerHTML=`${name} removed from Favorite`;
+    x.style.backgroundColor = "red";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+  } 
 }
 
 onFavBtnClick(name:string,id:string){
@@ -55,7 +62,52 @@ onFavBtnClick(name:string,id:string){
   });
   this.props.fetchPokemonByName.refetch({
     input:name
-  }) 
+  })
+  var x = document.getElementById('snackbarFavAdded') as HTMLInputElement;
+  if(x){
+    x.className = "show";
+    x.innerHTML=`${name} added to Favorite`;
+    x.style.backgroundColor = "#6BC694";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+  } 
+}
+
+onEvolutionUnFavBtnClick(name:string,id:string,evolutionname:string){
+  this.props.markunFavorite({
+    variables:{
+      input:id
+    }
+  });
+  this.props.fetchPokemonByName.refetch({
+    input:name
+  })
+  var x = document.getElementById('snackbarFavAdded') as HTMLInputElement;
+  if(x){
+    x.className = "show";
+    x.innerHTML=`${evolutionname} removed from Favorite`;
+    x.style.backgroundColor = "red";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+  } 
+}
+
+onEvolutionFavBtnClick(name:string,id:string,evolutionname:string){
+  //Fetch pokemon by name when pokemon marked as favorite
+  this.props.markFavorite({
+    variables:{
+      input:id
+    }
+  });
+  this.props.fetchPokemonByName.refetch({
+    input:name
+  })
+  var x = document.getElementById('snackbarFavAdded') as HTMLInputElement;
+  if(x){
+    x.className = "show";
+    x.innerHTML=`${evolutionname} added to Favorite`;
+    x.style.backgroundColor = "#6BC694";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+  } 
 }
 
 play(value:string) {
@@ -82,9 +134,9 @@ renderEvolution(){
           </div>
           <div className="pokemon-evolution-div__body__card__footer__favdiv">
             {item.isFavorite?
-            <img onClick={() => this.onUnFavBtnClick(this.state.name,item.id)} className="pokemon-evolution-div__body__card__footer__favdiv__icon" src={favorite}></img>
+            <img onClick={() => this.onEvolutionUnFavBtnClick(this.state.name,item.id,item.name)} className="pokemon-evolution-div__body__card__footer__favdiv__icon" src={favorite}></img>
             :
-            <img onClick={() => this.onFavBtnClick(this.state.name,item.id)} className="pokemon-evolution-div__body__card__footer__favdiv__icon" src={unfavorite}></img>
+            <img onClick={() => this.onEvolutionFavBtnClick(this.state.name,item.id,item.name)} className="pokemon-evolution-div__body__card__footer__favdiv__icon" src={unfavorite}></img>
             } 
           </div>
         </div>  
@@ -198,7 +250,9 @@ render(){
   
                 {this.renderEvolution()} 
               </div>
+              <div id="snackbarFavAdded"></div>
             </div>
+            
           :<div></div>
           }     
           

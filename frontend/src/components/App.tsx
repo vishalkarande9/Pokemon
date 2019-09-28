@@ -154,22 +154,34 @@ onFavButtonClick(e:React.MouseEvent<HTMLElement>){
 
 
 
-Fav(value:string){
+Fav(value:string,name:string){
   // on selecting pokemon as favorite
   this.props.markFavorite({
     variables:{
       input:value
     }
   });
+
+  var x = document.getElementById('snackbarFavAdded') as HTMLInputElement;
+  if(x){
+    x.className = "show";
+    x.innerHTML=`${name} added to Favorite`;
+    x.style.backgroundColor = "#6BC694";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+  }
+
+
 }
 
-unFav(value:string){
+unFav(value:string,name:string){
   // on selecting pokemon as unfavorite
   this.props.markunFavorite({
     variables:{
       input:value
     }
   });
+
   if(this.state.isFavoriteSelected){
     this.props.fetchPokemonList.refetch({
       input:{
@@ -181,6 +193,14 @@ unFav(value:string){
         }
       }
     }) 
+  }
+  var x = document.getElementById('snackbarFavAdded') as HTMLInputElement;
+  if(x){
+    x.className = "show";
+    x.innerHTML=`${name} removed from Favorite`;
+    x.style.backgroundColor = "red";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
   }
 }
 
@@ -334,6 +354,7 @@ ondeselect(){
           {this.listToDisplay()}  
        
           </div>
+          <div id="snackbarFavAdded"></div>
         </div>
     )
   }

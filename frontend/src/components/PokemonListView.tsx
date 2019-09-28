@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 type IPokemonListProps = {
   PokemonArr: any,
-  onFav(value:string):void,
-  onunFav(value:string):void,
+  onFav(value:string,name:string):void,
+  onunFav(value:string,name:string):void,
 }
 
 export const PokemonListView: React.FunctionComponent<IPokemonListProps> = ({ PokemonArr,onFav,onunFav, children}) => {
@@ -26,17 +26,19 @@ export const PokemonListView: React.FunctionComponent<IPokemonListProps> = ({ Po
                       <label className="row-card-div__footer__text__2">{item.types.join(',')}</label>
                     </div>
                     {item.isFavorite?
-                      <div className="row-card-div__footer__icondiv" onClick={() => onunFav(item.id)}>
+                      <div className="row-card-div__footer__icondiv" onClick={() => onunFav(item.id,item.name)}>
                         <img className="row-card-div__footer__icondiv__favoriteIcon" src={favorite}></img>
                       </div>
                       :
-                      <div className="row-card-div__footer__icondiv" onClick={() => onFav(item.id)}>
+                      <div className="row-card-div__footer__icondiv" onClick={() => onFav(item.id,item.name)}>
                         <img className="row-card-div__footer__icondiv__favoriteIcon" src={unfavorite}></img>
                       </div>
                     }
               </div>
+              
           )
       })}
+      
     </div>
   );
 }
