@@ -11,9 +11,12 @@ The Features provided in the application are as follows:
 - Clicking on a Pokemon image or name navigates to the above route to view the Pokemon details.
 - On the Pokemon details page, a speaker icon is provided, when clicked, plays the sound of that Pokemon.
 
+
 In addition to the above features, below are some additional feature:
 - Infinitely scroll to handle on-demand data-fetching for the long list of Pokemon.
 - Responsive layout.
+- Add toast notifications to show messages when adding or removing a Pokemon to and from your Favorites.
+
 
 ### Technology and boilerplate
 
