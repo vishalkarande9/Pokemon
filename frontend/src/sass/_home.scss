@@ -4,14 +4,14 @@
 .main-home-container{
     height: 100vh;
     width: 100vw;
-    background-color: white;
+    background-color: $white;
 }
 
 .home-header-btn-div{
     display:grid;
     grid-template-rows: repeat(6,1fr);
     grid-template-columns: repeat(30,1fr);
-    background-color: white;
+    background-color: $white;
     height: 8%;
     width:100%;
 }
@@ -51,7 +51,7 @@
     display:grid;
     grid-template-rows: repeat(6,1fr);
     grid-template-columns: repeat(30,1fr);
-    background-color: white;
+    background-color: $white;
     height: 8%;
     width:100%;
     grid-column-gap: 5px;
@@ -100,7 +100,7 @@
 
     &__icon{
        width:50%;
-       @media only screen and (min-width: 600px) {
+       @media only screen and (min-width: $bp-small) {
         width:30%;
         }
     }
@@ -125,7 +125,7 @@
  
     &__icon{
        width:100%;
-       @media only screen and (min-width: 600px) {
+       @media only screen and (min-width: $bp-small) {
         width:50%;
     }
     }   
@@ -141,7 +141,7 @@
 
     &__icon{
       width:100%;
-      @media only screen and (min-width: 600px) {
+      @media only screen and (min-width: $bp-small) {
        width:50%;
    }
   }  
@@ -176,15 +176,15 @@
     grid-gap: 10px;
 
 
-    @media only screen and (min-width: 505px) {
+    @media only screen and (min-width: $bp-xsmall) {
         grid-template-columns: repeat(auto-fit,230px);
     }
     
-    @media only screen and (min-width: 1200px) {
+    @media only screen and (min-width: $bp-xlarge) {
         grid-template-columns: repeat(auto-fit,291px);
     }
 
-    @media only screen and (min-width: 1400px) {
+    @media only screen and (min-width: $bp-xxlarge) {
         grid-template-columns: repeat(auto-fit,259px);
     }  
 }
@@ -223,12 +223,12 @@
 
         &__1{
             padding: 10px;
-            color: black;
+            color: $black;
             font-size:large;
         }
         &__2{
             padding: 10px;
-            color: black;
+            color: $black;
             font-size: medium;
         }
 
@@ -258,7 +258,7 @@
     width: 100%;
     display: grid;
     grid-auto-rows: 70px;
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: $bp-xsmall) {
         grid-auto-rows: 100px;
     }
     overflow-y: auto;
@@ -283,7 +283,7 @@
 
 .row-card-div__pokemon__img{
    width:50%;
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: $bp-medium) {
         width: 30%;
     }
 }
@@ -300,20 +300,20 @@
     justify-self: start;
     align-self: end;
     font-size: medium;
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: $bp-xsmall) {
         font-size: large;
     }
-    color: black;
+    color: $black;
 }
 
 .row-card-div__footer__text__2{
     justify-self: start;
     align-self: start;
     font-size: small;
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: $bp-xsmall) {
         font-size: medium;
     }
-    color: black;
+    color: $black;
 }
 
 .row-card-div__footer__icondiv{
@@ -326,7 +326,7 @@
 .row-card-div__footer__icondiv__favoriteIcon{
     height: auto;
     max-height: 25%;
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: $bp-xsmall) {
         max-height: 40%;
     }
 }
@@ -345,12 +345,12 @@
     min-width: 250px; 
     margin-left: -125px;
     font-size: small;
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: $bp-small) {
         min-width: 300px; 
         margin-left: -150px;
         font-size: medium;
     }
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: $bp-large) {
         min-width: 400px; 
         margin-left: -200px;
         font-size: large;

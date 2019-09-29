@@ -163,7 +163,7 @@ body {
   grid-template-columns: repeat(auto-fit, 1fr);
   overflow-y: auto;
   grid-gap: 10px; }
-  @media only screen and (min-width: 505px) {
+  @media only screen and (min-width: 500px) {
     .container-col-view-2 {
       grid-template-columns: repeat(auto-fit, 230px); } }
   @media only screen and (min-width: 1200px) {
@@ -238,7 +238,7 @@ body {
 
 .row-card-div__pokemon__img {
   width: 50%; }
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 750px) {
     .row-card-div__pokemon__img {
       width: 30%; } }
 
@@ -382,7 +382,7 @@ body {
         justify-items: center; }
         .pokemon-detail-div__card__header__img__div__img {
           width: 70%; }
-          @media only screen and (min-width: 768px) {
+          @media only screen and (min-width: 750px) {
             .pokemon-detail-div__card__header__img__div__img {
               width: 50%; } }
           @media only screen and (min-width: 1200px) {
@@ -559,7 +559,7 @@ body {
     grid-column-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     overflow-y: auto; }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 750px) {
       .pokemon-evolution-div__body {
         grid-template-columns: repeat(auto-fit, 220px); } }
     .pokemon-evolution-div__body__card {
@@ -572,7 +572,7 @@ body {
         justify-items: center; }
         .pokemon-evolution-div__body__card__imgdiv__img {
           width: 30%; }
-          @media only screen and (min-width: 768px) {
+          @media only screen and (min-width: 750px) {
             .pokemon-evolution-div__body__card__imgdiv__img {
               width: 50%; } }
       .pokemon-evolution-div__body__card__footer {
@@ -596,7 +596,7 @@ body {
           .pokemon-evolution-div__body__card__footer__favdiv__icon {
             color: black;
             width: 30%; }
-            @media only screen and (min-width: 768px) {
+            @media only screen and (min-width: 750px) {
               .pokemon-evolution-div__body__card__footer__favdiv__icon {
                 width: 50%; } }
 

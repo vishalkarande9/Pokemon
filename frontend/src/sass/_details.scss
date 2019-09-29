@@ -3,7 +3,7 @@
 .main-home-container{
     height: 100vh;
     width: 100vw;
-    background-color: white;
+    background-color: $white;
 }
 
 .pokemon-detail-div{
@@ -12,7 +12,7 @@
     display: grid;
     grid-template-rows: repeat(80,1fr);
     grid-template-columns: repeat(30,1fr);
-    background-color: white;
+    background-color: $white;
 
     &__card{
         grid-row:4/80;
@@ -38,10 +38,10 @@
 
                 &__img{
                    width:70%;
-                   @media only screen and (min-width: 768px) {
+                   @media only screen and (min-width: $bp-medium) {
                      width:50%;
                  }
-                 @media only screen and (min-width: 1200px) {
+                 @media only screen and (min-width: $bp-xlarge) {
                     width:30%;
                 }
                 }
@@ -61,7 +61,7 @@
                     grid-column: 1/-1;
                     z-index: 10;
                   width:50%;
-                  @media only screen and (min-width: 1200px) {
+                  @media only screen and (min-width: $bp-xlarge) {
                     width:30%;
                 }
                 }
@@ -85,10 +85,10 @@
             align-items: end;
             &__txt{
                font-size: small;
-               @media only screen and (min-width: 500px) {
+               @media only screen and (min-width: $bp-xsmall) {
                 font-size: large;
                }
-               color: black;
+               color: $black;
                padding-left: 4px; 
             }
            }
@@ -100,10 +100,10 @@
                align-items: start;
                &__txt{
                 font-size: small;
-                @media only screen and (min-width: 500px) {
+                @media only screen and (min-width: $bp-xsmall) {
                  font-size: large;
                 }                  
-                color: black; 
+                color: $black; 
                 padding-left: 4px; 
                }
            }
@@ -115,7 +115,7 @@
                align-items: center;
                &__icon{
                width: 50%;
-               @media only screen and (min-width: 1200px) {
+               @media only screen and (min-width: $bp-xlarge) {
                 width:30%;
             }
                }
@@ -123,7 +123,7 @@
            &__cpbar{
             grid-row: 10/11;
             grid-column: 1/12;
-            background-color: purple;
+            background-color: $purple;
             border-radius: 5px;
            }
            &__hpbar{
@@ -139,11 +139,11 @@
             justify-items: center;
             align-items: center;
             &__txt{
-                @media only screen and (min-width: 500px) {
+                @media only screen and (min-width: $bp-xsmall) {
                     font-size: medium;
                 }
                 font-size: 11px;
-                color: black;
+                color: $black;
             }
            }
            &__hp{
@@ -153,11 +153,11 @@
             justify-items: center;
             align-items: center;
             &__txt{
-                @media only screen and (min-width: 500px) {
+                @media only screen and (min-width: $bp-xsmall) {
                     font-size: medium;
                 }
                 font-size: 11px;
-                color: black;
+                color: $black;
             }
            }
            
@@ -180,10 +180,10 @@
                     justify-items: center;
                     align-items: end;
                     font-size: medium;
-                    @media only screen and (min-width: 500px) {
+                    @media only screen and (min-width: $bp-xsmall) {
                      font-size: large;
                  }
-                    color: black;
+                    color: $black;
                 }
                 &__footer{
                     display: grid;
@@ -191,10 +191,10 @@
                     align-items: top;
                     &__txt{
                         font-size: small;
-                        @media only screen and (min-width: 500px) {
+                        @media only screen and (min-width: $bp-xsmall) {
                          font-size: medium;
                      }
-                        color: black;
+                        color: $black;
                     }
                 }
             }
@@ -207,10 +207,10 @@
                     justify-items: center;
                     align-items: end;
                     font-size: medium;
-                    @media only screen and (min-width: 500px) {
+                    @media only screen and (min-width: $bp-xsmall) {
                      font-size: large;
                  }
-                    color: black;
+                    color: $black;
                 }
                 &__footer{
                     display: grid;
@@ -218,10 +218,10 @@
                     align-items: top;
                     &__txt{
                         font-size: small;
-                        @media only screen and (min-width: 500px) {
+                        @media only screen and (min-width: $bp-xsmall) {
                          font-size: medium;
                      }
-                        color: black;
+                        color: $black;
                     }
                 }
             }
@@ -237,7 +237,7 @@
     display: grid;
     grid-template-rows: repeat(7,1fr);
     grid-template-columns: repeat(30,1fr);
-    background-color: white;
+    background-color: $white;
     &__heading{
         grid-row: 1/2;
         grid-column: 2/30;
@@ -245,7 +245,7 @@
         align-items: center;
         justify-items: start;
         &__txt{
-            color: black;
+            color: $black;
         }
 
     }
@@ -258,7 +258,7 @@
         grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
         overflow-y: auto;
         
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: $bp-medium) {
             grid-template-columns: repeat(auto-fit,220px);
         }
         
@@ -273,7 +273,7 @@
                 justify-items: center;
                 &__img{
                   width:30%;
-                  @media only screen and (min-width: 768px) {
+                  @media only screen and (min-width: $bp-medium) {
                     width:50%;
                 }
                 }
@@ -289,7 +289,7 @@
                     justify-items: start;
                     align-items: center;
                     &__txt{
-                        color:black;
+                        color: $black;
                         padding-left: 5px;
                     }
                 }
@@ -299,9 +299,9 @@
                     justify-items: center;
                     align-items: center;
                     &__icon{
-                        color:black;
+                        color: $black;
                        width:30%;
-                       @media only screen and (min-width: 768px) {
+                       @media only screen and (min-width: $bp-medium) {
                         width:50%;
                     }
                     }
